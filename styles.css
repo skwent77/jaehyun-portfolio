@@ -27,3 +27,14 @@
   line-height: 1.65;
   overflow-wrap: anywhere;
 }
+
+.project-grid { align-items: start; }
+.project-summary {
+  display: block;
+  margin: 4px 0 9px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #5e6058;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
