@@ -1,5 +1,20 @@
 window.portfolioProjects = [
-  {id:'stock',title:'Stock Term Agent',category:'AI & Research',year:'2026',image:'stock',tags:'python, langchain, chromadb, rag, mcp',description:'자연어 질문에서 관련 주식 용어를 찾고 설명하는 한국어 주식 용어 RAG 에이전트입니다.',points:['한국어 주식 용어를 임베딩하고, ChromaDB의 cosine 유사도 검색으로 관련 문서를 조회했습니다.','LangChain과 다국어 임베딩을 연결해 질문에서 검색으로 이어지는 흐름을 구성했습니다.','검색 기능을 MCP 도구로 분리해 에이전트가 호출할 수 있는 구조를 탐색했습니다.'],links:[{label:'View on GitHub', url:'https://github.com/skwent77/stock-term-agent'}],note:'연결된 저장소는 프로젝트 소개용입니다. 공개된 소스의 범위는 저장소에서 확인할 수 있습니다.'},
+  {
+    id: 'stock',
+    title: 'Stock Term Agent',
+    category: 'AI & Research',
+    year: '2026',
+    image: 'stock',
+    tags: 'python, langchain, chromadb, rag, mcp',
+    description: '한국어 질문에서 관련 주식 용어를 찾아 설명하는 RAG 에이전트입니다. 웹 채팅은 벡터 검색 결과를 답변의 근거로 사용하고, MCP 도구는 별도의 문자열 검색으로 관련 용어를 반환합니다.',
+    points: [
+      '벡터 검색에서는 LangChain의 다국어 임베딩과 ChromaDB의 코사인 유사도 검색을 사용했습니다. CLI는 질문마다 기본 상위 3개 용어와 관련성 점수를 요청합니다.',
+      'MCP 문자열 검색은 전체 용어 또는 지정한 카테고리에서 후보를 찾습니다. 한글·영문 이름 중 검색어와 더 유사한 쪽의 점수에 단어와 연속 두 글자 조각의 일치 비율을 각각 더합니다. 용어명·영문명·카테고리·정의·예시를 합친 텍스트에 정규화한 검색어 전체가 들어 있으면 1점을 추가합니다.',
+      '문자열 점수가 0.25 이상인 후보를 점수가 높은 순으로 정렬하고, 동점이면 용어명 순으로 정렬합니다. 기본 최대 5개를 반환하며, 반환 한도는 1~20개로 조정할 수 있습니다.'
+    ],
+    links: [{label: 'View on GitHub', url: 'https://github.com/skwent77/stock-term-agent'}],
+    note: '연결된 저장소는 프로젝트 소개용입니다. 공개된 소스의 범위는 저장소에서 확인할 수 있습니다.'
+  },
   {id:'byol',title:'SKT AI Fellowship · 자기지도학습 연구',category:'AI & Research',year:'2021',image:'byol',tags:'python, pytorch, byol, docker',description:'SKT AI Fellowship 3기에서 멘토와 함께 라벨 없는 사내 차량 이미지를 차종 분류에 활용하는 방법을 연구했습니다. PyTorch로 구현한 BYOL(Bootstrap Your Own Latent)로 사전학습한 뒤, 승용차·택시·트럭·버스·승합차를 구분하는 성능을 지도학습 모델과 비교했습니다.',points:['BYOL 논문의 온라인 네트워크와 타깃 네트워크 상호작용을 분석하고 구현했습니다.','Pascal 형식의 바운딩박스 좌표를 YOLO 형식으로 변환해 차량 이미지 처리에 활용했습니다.','Docker 컨테이너 기반의 개발 환경을 구축했습니다.','팀 차량 분류 모델의 F1-score를 0.04 개선했으며, SKT AI Fellowship 3기 장려상을 수상했습니다.'],links:[{label:'View on GitHub', url:'https://github.com/skwent77/SKT-AI-Fellowship'}, {label:'DEVOCEAN에서 연구 결과 읽기', url:'https://devocean.sk.com/blog/techBoardDetail.do?ID=163494'}],note:'3인 팀 연구이며, BYOL 구현과 Docker 환경 구축을 담당했습니다. 성능 개선 값은 프로젝트 기록에 따른 팀 모델의 결과입니다.'},
   {id:'crack',title:'Micro-crack Detection',category:'AI & Research',year:'2020',image:'crack',tags:'computer vision, efficientnet, xception, ensemble',description:'정보통신산업진흥원(NIPA)이 주관한 2020 인공지능 문제해결 경진대회 본선에서 태영세라믹의 과제에 참여했습니다. 타일 이미지를 미세 균열이 있는 경우와 없는 경우로 나누는 이진 분류 모델을 개발했습니다.',points:['ImageNet 사전학습 모델인 Xception과 EfficientNet-B5를 활용해 전이학습을 수행했습니다.','Horizontal Flip과 픽셀 정규화를 적용하고, 학습 및 검증 결과를 비교했습니다.','Xception 3개와 EfficientNet-B5 3개의 예측을 결합한 앙상블을 구성했습니다.','팀 최종 F1-score 0.948729, 본선 3위 우수상을 기록했습니다.'],links:[{label:'View on GitHub', url:'https://github.com/skwent77/2020aikorea-round2'}],note:'대회 결과와 모델 구성은 공개 저장소의 README에 기록되어 있습니다.'},
   {id:'peelie',title:'Peelie',category:'Backend',year:'Web application',image:'peelie',tags:'java, spring boot, @Async, jpa, gpt api, github actions',description:'설문 결과를 바탕으로 생성형 AI가 카드를 만드는 소셜 온보딩 서비스의 백엔드 프로젝트입니다.',points:['설문 데이터와 GPT API를 연결하는 카드 생성 API를 개발했습니다.','Java·Spring Boot에서 @Async와 트랜잭션 커밋 후 실행되는 이벤트 리스너를 사용해, 설문 저장이 완료된 뒤 온보딩 완료 이벤트를 Redis Streams에 비동기로 발행했습니다.','시간이 걸리는 생성 작업을 비동기로 처리하고, 폴링으로 결과를 조회하는 흐름을 적용했습니다.','4계층 구조를 적용해 요청 처리와 비즈니스 로직, 데이터 접근의 역할을 나누었습니다.'],note:'기존 포트폴리오에 정리된 프로젝트입니다. 상단 그래픽은 처리 흐름을 설명하는 개념도입니다.'},
